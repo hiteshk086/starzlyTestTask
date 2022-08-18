@@ -4,6 +4,7 @@ import {FlatList} from 'react-native-gesture-handler';
 import _ from 'lodash';
 import axios from 'axios';
 import VideoFeed from '../../components/common/VideoFeed';
+import ProductModal from '../../components/common/ProductModal';
 const HomeScreen = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [feedData, setData] = useState<any>([]);
@@ -51,6 +52,8 @@ const HomeScreen = () => {
         renderItem={({item, index}: any) => (
           <VideoFeed
             key={item.id}
+            item={item}
+            videoThumbnail={item.thumbnail}
             // ref={(el: any) => (mediaRef.current[index] = el)}
             videoLikes={item?.talent?.featured}
             isPaused={currentIndex !== index}

@@ -49,7 +49,7 @@ const ScrollableModal = (props: props) => {
           activeOpacity={0.5}
           onPress={onPress}
           style={{alignSelf: 'flex-end', paddingVertical: 10}}>
-          <AntDesign name="close" size={22} />
+          <AntDesign name="close" size={22} color={'#000000'} />
         </TouchableOpacity>
         <ScrollView
           showsVerticalScrollIndicator={false}

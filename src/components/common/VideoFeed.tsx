@@ -4,6 +4,7 @@ import Video from 'react-native-video';
 import Icon from 'react-native-vector-icons/Entypo';
 import CircularButton from '../core/CircularButton';
 import ProductModal from './ProductModal';
+import ProductCard from './ProductCard';
 interface VideoFeedProps {
   ref?: any;
   videoUrl: string;
@@ -11,9 +12,19 @@ interface VideoFeedProps {
   videoTitle: string;
   userImage?: string;
   videoLikes: number;
+  videoThumbnail: string;
+  item?: any;
 }
 const VideoFeed: React.FC<VideoFeedProps> = (props: VideoFeedProps) => {
-  const {isPaused, videoUrl, ref, videoTitle, userImage, videoLikes} = props;
+  const {
+    isPaused,
+    videoUrl,
+    ref,
+    videoTitle,
+    userImage,
+    videoLikes,
+    videoThumbnail,
+  } = props;
   const [isMute, setVideoToMute] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [likes, setLikes] = useState(videoLikes);
@@ -46,12 +57,7 @@ const VideoFeed: React.FC<VideoFeedProps> = (props: VideoFeedProps) => {
           <Text style={styles.buttonText}>{videoLikes}</Text>
         </View>
         <View style={styles.singleButtonContainer}>
-          <CircularButton
-            iconName="heart-alt"
-            isImage
-            imageUrl={userImage}
-            onPress={() => setOpenModal(true)}
-          />
+          <CircularButton iconName="heart-alt" isImage imageUrl={userImage} />
         </View>
         <View style={styles.singleButtonContainer}>
           <CircularButton
@@ -62,12 +68,16 @@ const VideoFeed: React.FC<VideoFeedProps> = (props: VideoFeedProps) => {
         </View>
       </View>
 
+      <View style={styles.productCardContainer}>
+        <ProductCard onPress={() => setOpenModal(true)} />
+      </View>
+
       <Video
         source={{
           uri: videoUrl,
         }}
         ref={ref}
-        // poster={}
+        poster={videoThumbnail}
         onVideoLoad={() => console.log('Heasasasdre')}
         paused={isPaused}
         repeat={true}
@@ -119,5 +129,12 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontWeight: 'bold',
     fontSize: 15,
+  },
+  productCardContainer: {
+    position: 'absolute',
+    bottom: 30,
+    width: '100%',
+    alignSelf: 'center',
+    paddingHorizontal: 20,
   },
 });

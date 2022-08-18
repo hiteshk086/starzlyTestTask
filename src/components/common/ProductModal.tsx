@@ -1,15 +1,5 @@
-import axios from 'axios';
 import React, {useState} from 'react';
-import {
-  View,
-  Button as RNButton,
-  StyleSheet,
-  Image,
-  Text,
-  TouchableOpacity,
-  Alert,
-  Dimensions,
-} from 'react-native';
+import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
 import {
   State,
   TapGestureHandlerStateChangeEvent,
@@ -157,7 +147,7 @@ const ProductModal = (props: ProductModalProps) => {
               product so they're compelled
             </Text>
             <Text
-              onPress={() => console.log('asdasssssss')}
+              onPress={() => toggleNumberOfLines()}
               style={[
                 styles.rating,
                 {

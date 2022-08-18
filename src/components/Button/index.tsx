@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 interface props {
   width?: string | number;
