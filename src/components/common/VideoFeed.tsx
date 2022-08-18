@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import Video from 'react-native-video';
 import Icon from 'react-native-vector-icons/Entypo';
 import CircularButton from '../core/CircularButton';
-import LinearGradient from 'react-native-linear-gradient';
+import ProductModal from './ProductModal';
 interface VideoFeedProps {
   ref?: any;
   videoUrl: string;
@@ -17,6 +17,7 @@ const VideoFeed: React.FC<VideoFeedProps> = (props: VideoFeedProps) => {
   const [isMute, setVideoToMute] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [likes, setLikes] = useState(videoLikes);
+  const [openModal, setOpenModal] = useState(false);
   return (
     <View>
       <View style={styles.videoTitleContainer}>
@@ -31,6 +32,7 @@ const VideoFeed: React.FC<VideoFeedProps> = (props: VideoFeedProps) => {
             iconName="heart-alt"
             iconColor={isLiked ? '#f61c6c' : '#ffffff'}
             onPress={() => {
+              console.log(';asdasd');
               setIsLiked(!isLiked);
               if (isLiked) {
                 setLikes(likes - 1);
@@ -44,7 +46,12 @@ const VideoFeed: React.FC<VideoFeedProps> = (props: VideoFeedProps) => {
           <Text style={styles.buttonText}>{videoLikes}</Text>
         </View>
         <View style={styles.singleButtonContainer}>
-          <CircularButton iconName="heart-alt" isImage imageUrl={userImage} />
+          <CircularButton
+            iconName="heart-alt"
+            isImage
+            imageUrl={userImage}
+            onPress={() => setOpenModal(true)}
+          />
         </View>
         <View style={styles.singleButtonContainer}>
           <CircularButton
@@ -60,6 +67,8 @@ const VideoFeed: React.FC<VideoFeedProps> = (props: VideoFeedProps) => {
           uri: videoUrl,
         }}
         ref={ref}
+        // poster={}
+        onVideoLoad={() => console.log('Heasasasdre')}
         paused={isPaused}
         repeat={true}
         resizeMode={'stretch'}
@@ -67,9 +76,10 @@ const VideoFeed: React.FC<VideoFeedProps> = (props: VideoFeedProps) => {
         style={{
           height: Dimensions.get('window').height - 80,
           width: '100%',
-          zIndex: -2,
+          zIndex: -1,
         }}
       />
+      <ProductModal openModal={openModal} setOpenModal={setOpenModal} />
     </View>
   );
 };

@@ -16,6 +16,7 @@ export const MyTabBar = ({state, descriptors, navigation}: any) => {
         const isFocused = state.index === index;
 
         const onPress = () => {
+          console.log('asdasd');
           const event = navigation.emit({
             type: 'tabPress',
             target: route.key,
@@ -68,11 +69,12 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     height: 80,
-    // bottom: 20,
+    width: '100%',
     backgroundColor: 'black',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
   itemContainer: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },

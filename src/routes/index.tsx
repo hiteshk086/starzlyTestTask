@@ -1,10 +1,8 @@
-import {View, Text} from 'react-native';
 import React from 'react';
 import HomeScreen from '../screens/Home';
 import ProfileScreen from '../screens/Profile';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {MyTabBar} from '../components/common/MyTabBar';
-import LinearGradient from 'react-native-linear-gradient';
 import Discover from '../screens/Discover';
 import Stars from '../screens/Stars';
 import Cart from '../screens/Cart';
@@ -16,9 +14,6 @@ const Routes = () => {
       tabBar={props => <MyTabBar {...props} />}
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {
-          backgroundColor: 'red',
-        },
       }}>
       <Tab.Screen
         name="Discover"
